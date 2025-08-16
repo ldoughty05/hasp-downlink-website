@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HASP Live Graph</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body style="background:#f8f9fa;font-family:sans-serif;">
+  <h2>HASP Live Graph</h2>
+  <canvas id="haspChart"></canvas>
+
+  <script>
+    const ctx = document.getElementById("haspChart").getContext("2d");
+    const chart = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: [],
+        datasets: [{
+          label: "HASP Value",
+          data: [],
+          borderColor: "blue",
+          fill: false
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          x: { title: { display: true, text: "Time" }},
+          y: { title: { display: true, text: "Value" }}
+        }
+      }
+    });
+
+    async function fetchData() {
+      const res = await fetch("/data");
+      const json = await res.json();
+
+      chart.data.labels = json.labels;
+      chart.data.datasets[0].data = json.values;
+      chart.update();
+    }
+
+    // Fetch new data every 5 seconds
+    fetchData();
+    setInterval(fetchData, 5000);
+  </script>
+</body>
+</html>
