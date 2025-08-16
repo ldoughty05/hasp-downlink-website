@@ -1,15 +1,15 @@
 import { useNavigate } from 'react-router-dom';
 import styles from "../styles/home.module.css"
 import PAYLOAD from "../assets/Payload_Alone.png"
-
+import LaunchTimeDelta from '../components/LaunchTimeDelta';
 
 function Home() {
-  let time_since_launch= "-10 Days"
   const navigate = useNavigate();
+
   return (
     <div className={styles.home}>
       <h2 className={styles.title}>HASP 2025 High Altitude Balloon Payload</h2>
-      <h1>Launch in T{ time_since_launch }</h1>
+      <h1>Launch in {<LaunchTimeDelta />}</h1>
       <button onClick={() => navigate("/downlink")}>
         Watch Downlink
       </button>

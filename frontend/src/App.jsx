@@ -15,7 +15,7 @@ function App() {
           <Route path="/downlink" element={<Downlink />} />
           <Route path="*" element={<p>404. Page you're looking for can't be found. </p>} />
         </Routes>
-        <div class="footer"/>
+        <div className="footer"/>
       </BrowserRouter>
     </>
   )
