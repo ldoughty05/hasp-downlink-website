@@ -1,0 +1,14 @@
+.downlink h2 {
+  font-weight: lighter;
+}
+
+.graphs_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
+  list-style: none;
+}
+
+.graphs_grid ul{
+  list-style: none;
+}
