@@ -1,0 +1,14 @@
+.heading .logo {
+  height: 12em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.heading button {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  padding: 0;
+}

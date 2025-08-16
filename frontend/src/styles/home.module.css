@@ -1,0 +1,19 @@
+.description {
+  display: flex;
+  margin: 10em 0;
+}
+
+.home button:focus,
+.home button:focus-visible,
+.home button:hover {
+  filter: drop-shadow(0 0 2em #ff1111aa);
+  outline: none;
+}
+
+.home h2 {
+  font-weight: lighter;
+}
+
+.payload_alone {
+  width: 50%
+}

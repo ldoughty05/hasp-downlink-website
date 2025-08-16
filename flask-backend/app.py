@@ -2,6 +2,8 @@ from flask import Flask, jsonify, render_template
 from datetime import datetime, timedelta
 from data_collection import fetch_hasp_data, get_most_recent_file_url, get_log_file
 import pandas as pd
+import random
+
 
 
 app = Flask(__name__)
@@ -13,11 +15,12 @@ def get_data_frame():
   return df.sort_values(by='sample_time')
 
 @app.route("/")
-def index():
+def home():
   LAUNCH_TIME = datetime(2025, 9, 5, 8, 45, 54) # September 5, 2025, 8:45:54 AM UTC # TODO: update this to the actual launch time
   time_since_launch = datetime.now() - LAUNCH_TIME
+  human_readable_time_delta = str(time_since_launch)
 
-  return render_template("index.html")
+  return render_template("home.html", time_since_launch=human_readable_time_delta)
 
 
 @app.route("/data")
@@ -36,6 +39,22 @@ def get_json(dependent_variable):
 
   data = df[['sample_time', dependent_variable]].to_dict(orient='records')
   
+  return jsonify(data)
+
+@app.route("/graph/<int:graph_id>")
+def graph_data(graph_id):
+  # Example: Multi-series random data
+  x = list(range(10))
+  y1 = [random.randint(0,10) for _ in x]
+  y2 = [random.randint(0,10) for _ in x]
+
+  data = {
+      "traces": [
+          {"x": x, "y": y1, "mode": "lines", "name": "Series 1"},
+          {"x": x, "y": y2, "mode": "lines", "name": "Series 2"}
+      ],
+      "layout": {"title": f"Graph {graph_id}"}
+  }
   return jsonify(data)
 
 
