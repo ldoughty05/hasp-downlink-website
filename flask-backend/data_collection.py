@@ -1,5 +1,13 @@
 import requests
 import pandas as pd
+import redis
+import pickle
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+CACHE_KEY = os.getenv("REDIS_CACHE_KEY")
+CACHE_TTL = 60 # seconds
 
 
 def get_most_recent_file_url():
@@ -119,3 +127,15 @@ def fetch_hasp_data(file_url=None):
     file_url = get_most_recent_file_url()
   logfile_text = get_log_file(file_url)
   return create_dataframe_from_log(logfile_text)
+
+
+def get_cached_data(redis_store, alternative_url=None):
+  cached = redis_store.get(CACHE_KEY)
+  if cached:
+    print("Using cached DataFrame from Redis")
+    df = pickle.loads(cached) # maybe store it here as json instead
+  else:
+    print("Expired. Fetching dataframe from HASP")
+    df = fetch_hasp_data(alternative_url)
+    redis_store.setex(CACHE_KEY, CACHE_TTL, pickle.dumps(df)) # expires oly value and sets new one.
+  return df
