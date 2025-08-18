@@ -1,4 +1,4 @@
-bind = "unix:/home/pi/Git/hasp-downlink-website/hasp-downlink-website-backend.sock"
+bind = "unix:/home/pi/Git/hasp-downlink-website/flask-backend/hasp-downlink-website-backend.sock"
 
 workers = 2
 threads = 1
