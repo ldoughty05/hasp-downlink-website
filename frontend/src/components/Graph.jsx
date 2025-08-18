@@ -7,7 +7,9 @@ import styles from "../styles/graph.module.css"
 ScatterGraph.propTypes = {
   x: PropTypes.arrayOf(PropTypes.number).isRequired,
   y_list: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired,
-  title: PropTypes.string,
+  y_labels: PropTypes.arrayOf(PropTypes.string).isRequired,
+  title: PropTypes.string.isRequired,
+
 }
 function ScatterGraph(props) {
   let data = []
@@ -15,6 +17,7 @@ function ScatterGraph(props) {
     data.push({
       x: props.x,
       y: props.y_list[i],
+      name: props.y_labels[i],
       type: 'scatter',
       mode: 'lines',
     });

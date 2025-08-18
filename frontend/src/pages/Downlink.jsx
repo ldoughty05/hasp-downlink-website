@@ -49,6 +49,7 @@ function Downlink() {
               dataframe.map(entry => entry["temperature"]["sensor_5"]),
               dataframe.map(entry => entry["temperature"]["sensor_6"]),
             ]}
+            y_labels={["sensor 1", "sensor 2", "sensor 3", "sensor 4", "sensor 5", "sensor 6"]}
             title="Temperature Sensors"
           />
           <ScatterGraph 
@@ -58,6 +59,8 @@ function Downlink() {
               dataframe.map(entry => entry["imu"]["accel_y"]),
               dataframe.map(entry => entry["imu"]["accel_z"]),
             ]}
+            y_labels={["x", "y", "z"]}
+
             title="IMU Acceleration"
           />
           <ScatterGraph 
@@ -67,6 +70,7 @@ function Downlink() {
               dataframe.map(entry => entry["imu"]["gyro_y"]),
               dataframe.map(entry => entry["imu"]["gyro_z"]),
             ]}
+            y_labels={["x", "y", "z"]}
             title="IMU Gyroscope"
           />
           <ScatterGraph 
@@ -77,6 +81,7 @@ function Downlink() {
               dataframe.map(entry => entry["cell_3"]["voltage"]),
               dataframe.map(entry => entry["modules"]["voltage"]),
             ]}
+            y_labels={["cell 1", "cell 2", "cell 3", "modules"]}
             title="Solar Cell Voltages"
           />
           <ScatterGraph 
@@ -87,6 +92,7 @@ function Downlink() {
               dataframe.map(entry => entry["cell_3"]["current"]),
               dataframe.map(entry => entry["modules"]["current"]),
             ]}
+            y_labels={["cell 1", "cell 2", "cell 3", "modules"]}
             title="Solar Cell Currents"
           />
         </>}
