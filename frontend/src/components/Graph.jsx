@@ -6,8 +6,10 @@ import styles from "../styles/graph.module.css"
 
 ScatterGraph.propTypes = {
   x: PropTypes.arrayOf(PropTypes.number).isRequired,
+  x_title: PropTypes.string,
   y_list: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired,
   y_labels: PropTypes.arrayOf(PropTypes.string).isRequired,
+  y_title: PropTypes.string,
   title: PropTypes.string.isRequired,
 
 }
@@ -26,7 +28,11 @@ function ScatterGraph(props) {
   return (
     <Plot className={styles.graph}
       data={data}
-      layout={ {title: {text: props.title}} }
+      layout={{
+        title: { text: props.title },
+        xaxis: { title: { text: props.x_title } },
+        yaxis: { title: { text: props.y_title } },
+      }}
     />
   );
 }

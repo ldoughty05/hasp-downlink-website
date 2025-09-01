@@ -3,6 +3,7 @@ import './styles/App.css'
 import Header from "./components/Header"
 import Home from "./pages/Home"
 import Downlink from "./pages/Downlink"
+import Footer from "./components/Footer"
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path="*" element={<p>404. Page you're looking for can't be found. </p>} />
         </Routes>
         <div className="footer"/>
+        <Footer />
       </BrowserRouter>
     </>
   )

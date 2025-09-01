@@ -1,6 +1,7 @@
 .description {
   display: flex;
   margin: 10em 0;
+  text-align: justify;
 }
 
 .home button:focus,
@@ -16,4 +17,20 @@
 
 .payload_alone {
   width: 50%
+}
+
+.photo_gallery {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2em;
+  padding: 2em;
+  height: 20em;
+  margin-top: 4em;
+  overflow-x: auto;
+  width: inherit;
+}
+
+.photo_gallery img {
+  border-radius: 1em;
+  box-shadow: 0 0 2em #00000088;
 }
