@@ -25,7 +25,9 @@ function Home() {
           <p>We built this payload during the 2024-2025 school year. Its purpose is to evaluate the effectiveness of perovskite solar cells in near-space conditions.</p>
           <h3>What does the payload do?</h3>
           <p>
-            The payload is equipped with 
+            The payload is equipped with sensors for temperature, pressure, and acceleration. To measure the efficiency of the solar cells, it uses a "voltage ladder" which steps through a series of 
+            resistors to measure the voltage and current output of the solar cells at different loads. Along with the solar cells on the surface of the payload, there is a sun angle sensor so we can 
+            correct for varying flux angles of the sunlight relative to the panels during the flight.
           </p>
           <h3>What are perovskites?</h3>
           <p>
