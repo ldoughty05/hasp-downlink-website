@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 import redis
 import pickle
-from data_collection import get_cached_data, get_most_recent_file_url, get_log_file
+from data_collection import get_cached_data, get_log_file_url_list, get_log_file
 
 load_dotenv()
 app = Flask(__name__)
@@ -17,8 +17,8 @@ REDIS_DB = int(os.getenv("REDIS_DB"))
 redis_store = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, db=REDIS_DB)
 
 def get_data_frame():
-  df = get_cached_data(redis_store, "https://sg-webserver.phys.lsu.edu/HASP_data/2025/INT/pyld01_250730_125301.log")
-  if df.empty:
+  df = get_cached_data(redis_store, None) # Gets most recent data file if nothing cached
+  if df.empty or len(df) == 0:
     return jsonify({"error": "No data available"}), 404
   return df.sort_values(by='sample_time')
 
@@ -38,10 +38,10 @@ def data():
 
 @app.route("/recent-log-url")
 def recent_log_url():
-  return get_most_recent_file_url()
+  return get_log_file_url_list()[0]
 
 
 @app.route("/recent-log-file")
-def recent_log_file(): # TODO: this should be from in my own server, not the hasp webserver
-  return get_log_file(get_most_recent_file_url())
+def recent_log_file():
+  return get_log_file(get_log_file_url_list()[0])
 

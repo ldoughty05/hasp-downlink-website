@@ -9,16 +9,25 @@ load_dotenv()
 CACHE_KEY = os.getenv("REDIS_CACHE_KEY")
 CACHE_TTL = 60 # seconds
 
-
-def get_most_recent_file_url():
-  payload1_display_url = "https://sg-webserver.phys.lsu.edu/payload-integration-data/?pname=pyld01"
+'''
+List is in order from newest to oldest
+'''
+def get_log_file_url_list():
+  payload1_display_url = "https://sg-webserver.phys.lsu.edu/payload-flight-data/?pname=pyld01"
   webpage_response = requests.get(payload1_display_url)
-  most_recent_datetime = ""
   tokenized_response = webpage_response.text.splitlines()
-  for line in tokenized_response:
-    if "pyld01" in line:
-      most_recent_file_url = line.strip()[13:-34] # TODO: fix this hardcoded index
-  return most_recent_file_url
+  file_urls = [line.strip()[13:-34] for line in tokenized_response if "pyld01" in line]
+  file_urls.reverse() # reverse so that newest is first
+  return file_urls
+
+def get_most_recent_log_file(attempt_limit=4):
+  log_file_list = get_log_file_url_list()
+  n = 0
+  log_file = get_log_file(log_file_list[n]) # n = 0 
+  while len(log_file) == 0 and n < attempt_limit:
+    n += 1
+    log_file = get_log_file(log_file_list[n])
+  return log_file
 
 
 def get_log_file(file_url):
@@ -124,8 +133,10 @@ def fetch_hasp_data(file_url=None):
   If no file_url is provided, it fetches the most recent file URL.
   """
   if file_url is None:
-    file_url = get_most_recent_file_url()
-  logfile_text = get_log_file(file_url)
+    logfile_text = get_most_recent_log_file()
+  else:
+    logfile_text = get_log_file(file_url)
+
   return create_dataframe_from_log(logfile_text)
 
 
