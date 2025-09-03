@@ -17,7 +17,7 @@ function formatTime(ms) {
 };
 
 function LaunchTimeDelta() {
-  const LAUNCH_DATETIME = new Date(2025, 8, 4, 7, 0); // Sept 4, 2025 7:00am (Month is zero indexed)
+  const LAUNCH_DATETIME = new Date(Date.UTC(2025, 8, 4, 7 + 6, 0)); // Sept 4, 2025 7:00am Mountain Time + 6 into UTC(Month is zero indexed)
   const [timedelta, setTimedelta] = useState("");
 
   useEffect(() => {
