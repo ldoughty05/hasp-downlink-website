@@ -19,6 +19,11 @@
   padding: 0;
   color: rgba(255, 255, 255, 0.87);
 }
+@media (prefers-color-scheme: light) {
+  .heading button {
+    color: #213547;
+  }
+}
 
 @media (max-width: 900px) {
   .heading_button {

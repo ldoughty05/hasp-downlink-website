@@ -14,6 +14,7 @@ function Home() {
   return (
     <div className={styles.home}>
       <h2 className={styles.title}>HASP 2025 High Altitude Balloon Payload</h2>
+      <p><i>Notice: launch has been delayed because of high winds. Countdown has been updated.</i></p>
       <h1>Launch in {<LaunchTimeDelta />}</h1>
       <button onClick={() => navigate("/downlink")}>
         Watch Downlink
