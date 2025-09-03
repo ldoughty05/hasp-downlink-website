@@ -9,7 +9,7 @@ function Header() {
   return (
     <>
       <div className={styles.heading}>
-        <button onClick={() => navigate("/")}>
+        <button onClick={() => navigate("/")} className={styles.heading_button}>
           <img src={axpLogo} className={styles.logo} alt="AXP logo" />
           <h1>UNL Aerospace Club: Advanced eXperimental Payloads </h1>
         </button>
