@@ -8,3 +8,17 @@
   gap: 2rem;
   list-style: none;
 }
+
+.video_links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.video_links h3, .video_links ul {
+  margin: 0;
+}
+.video_links li {
+  text-align: left;
+}

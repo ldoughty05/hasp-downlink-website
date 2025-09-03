@@ -43,6 +43,15 @@ function Downlink() {
       <h2 className={styles.title}>HASP 2025 High Altitude Balloon Payload</h2>
       <h1>Live Downlink</h1>
       <p className={styles.title}>Flight Time: {<LaunchTimeDelta />}</p>
+      <div className={styles.video_links}>
+        <h3>Video Links:</h3>
+        <ul >
+          <li><a href="https://www.youtube.com/c/LouisianaSpaceGrant/live">YouTube - Louisiana Space Grant Live</a></li>
+          <li><a href="https://www.youtube.com/@HASPpayload/live">YouTube - HASP Payload Live</a></li>
+          <li><a href="https://www.youtube.com/@laacesprogram527/live">YouTube - LaACES Program</a></li>
+          <li><a href="https://video.ibm.com/channel/nasa-educational">IBM - NASA CSBF Tower Camera</a></li>
+        </ul>
+      </div>
       <div className={styles.graphs_grid}>
         {dataframe.length > 0 && <>
           <ScatterGraph 
