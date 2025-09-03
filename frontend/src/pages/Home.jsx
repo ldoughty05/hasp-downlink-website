@@ -18,8 +18,8 @@ function Home() {
       <button onClick={() => navigate("/downlink")}>
         Watch Downlink
       </button>
-      <div className={styles.description}>
-        <div>
+      <div className={styles.payload_info_container}>
+        <div className={styles.description}>
           <h3>Welcome to the HASP downlink page!</h3>
           <p>This page displays real-time data from University of Nebraska's payload on the <a href="https://laspace.lsu.edu/hasp/">High Altitude Student Platform</a>, a high altitude ballooning program for student built scientific payloads.</p>
           <p>We built this payload during the 2024-2025 school year. Its purpose is to evaluate the effectiveness of perovskite solar cells in near-space conditions.</p>

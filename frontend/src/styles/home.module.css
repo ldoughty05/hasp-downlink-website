@@ -1,7 +1,36 @@
-.description {
+.payload_info_container {
   display: flex;
-  margin: 10em 0;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 5em 0;
+}
+
+.payload_info_container .description {
   text-align: justify;
+  max-width: 600px;
+}
+
+.payload_info_container img {
+  object-fit:fill;
+  height: auto;
+}
+
+@media (max-width: 900px) {
+  .payload_info_container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .payload_info_container img {
+    max-width: 90%;
+  }
+
+  .payload_info_container .description {
+    text-align: left;
+    padding: 0 1em;
+  }
+
 }
 
 .home button:focus,
@@ -14,6 +43,9 @@
 .home h2 {
   font-weight: lighter;
 }
+
+
+
 
 .payload_alone {
   width: 50%
